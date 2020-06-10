@@ -1,0 +1,5 @@
+__pycache__/
+.vscode/
+.context
+build
+aws_resources.egg-info/
