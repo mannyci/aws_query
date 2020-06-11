@@ -9,10 +9,10 @@ from collections import defaultdict
 from functools import partial
 from multiprocessing.pool import ThreadPool
 
-from aws_resources.request import RequestMgr
-from aws_resources.utils.client import get_client
-from aws_resources.utils.service import ServiceManager
-from aws_resources.utils.operations import BuildOperation
+from aws_query.request import RequestMgr
+from aws_query.utils.client import get_client
+from aws_query.utils.service import ServiceManager
+from aws_query.utils.operations import BuildOperation
 
 logger = logging.getLogger(__name__)
 class OPSManager(object):
@@ -69,7 +69,7 @@ class OPSManager(object):
       roleArn = 'arn:aws:iam::{}:role/{}'.format(self.args.account, self.args.role)
       sts_client = self.session.create_client('sts')
       try:
-        assumed_role = sts_client.assume_role(RoleArn=roleArn, RoleSessionName='aws-resources')
+        assumed_role = sts_client.assume_role(RoleArn=roleArn, RoleSessionName='aws-query')
         credential = assumed_role['Credentials']
         logger.info('Successfully assumed role: {}'.format(roleArn))
         self.session.set_credentials(

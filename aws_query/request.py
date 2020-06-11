@@ -18,9 +18,9 @@ class RequestMgr(object):
   """
   Class for making an api call to AWS. We get a list of operations and a session.
   """
-  def __init__(self, **kwargs):
-    for key in kwargs:
-      setattr(self, key, kwargs[key])
+  def __init__(self, session=None, operations=None):
+    self.session = session
+    self.operations = operations
 
   def __call__(self):
     self._make_thread()
@@ -34,7 +34,7 @@ class RequestMgr(object):
         _CLIENTS[(service, region)] = self.session.create_client(service, region_name=region)
       except Exception as e:
         if isinstance(e, UnknownServiceError):
-            logger.error('Unknown service {}'.format(service))
+          logger.error('Unknown service {}'.format(service))
         logger.debug(e)
         sys.exit()
     return _CLIENTS[(service, region)]

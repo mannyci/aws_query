@@ -5,10 +5,10 @@ from argparse import ArgumentParser
 import botocore
 from botocore import __version__ as botocore_version
 
-from aws_resources import __version__
-from aws_resources.query import OPSManager
-from aws_resources.utils.client import get_client
-from aws_resources.argparser import get_args
+from aws_query import __version__
+from aws_query.query import OPSManager
+from aws_query.utils.client import get_client
+from aws_query.argparser import get_args
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ def _setup_child_logs():
 class CLIManager(object):
   def __init__(self, session=None):
     self.session = botocore.session.get_session() if not session else session
-    self.session.user_agent_name = 'aws-resources'
+    self.session.user_agent_name = 'aws-query'
     self.session.user_agent_version = __version__
     self.session.user_agent_extra = 'botocore/%s' % botocore_version
 

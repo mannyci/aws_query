@@ -22,14 +22,14 @@ with open("README.md", "r") as doc:
     long_description = doc.read()
 
 setup(
-    name="aws_resources",
-    version=find_version("aws_resources", "__init__.py"),
+    name="aws_query",
+    version=find_version("aws_query", "__init__.py"),
     author="Manas Maiti",
     author_email="manas.maiti@gmail.com",
     description="Query AWS Resources",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/mannyci/aws_resources",
+    url="https://github.com/mannyci/aws_query",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -50,8 +50,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'aws-resources=aws_resources.cli:main',
-            'aws_resources=aws_resources.cli:main',
+            'aws-query=aws_query.cli:main',
+            'aws_query=aws_query.cli:main',
         ],
     },
 )

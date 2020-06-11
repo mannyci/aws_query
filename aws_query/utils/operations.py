@@ -5,7 +5,7 @@ from collections import defaultdict
 from functools import partial
 from multiprocessing.pool import ThreadPool
 
-from aws_resources.utils.client import get_client
+from aws_query.utils.client import get_client
 
 logger = logging.getLogger(__name__)
 
